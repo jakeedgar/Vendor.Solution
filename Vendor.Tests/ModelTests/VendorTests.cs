@@ -65,8 +65,21 @@ namespace BakeryVendor.Tests
       Vendor testVendor2 = new Vendor(vendorName2);
 
       Vendor result = Vendor.Find(2);
-      Assert.AreEqual(testVendor2, result);
-      
+      Assert.AreEqual(testVendor2, result);      
+    }
+
+    [TestMethod]
+    public void AddOrder_AssociatesOrderWithVendor_OrderList()
+    {
+      string description = "some bread";
+      int price = 1;
+      Order testOrder = new Order(description, price);
+      List<Order> newList = new List<Order> { testOrder };
+      string vendorName = "New Vendor";
+      Vendor testVendor = new Vendor(vendorName);
+      testVendor.AddOrder(testOrder);
+      List<Order> result = testVendor.Orders;
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
