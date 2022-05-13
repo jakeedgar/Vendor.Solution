@@ -14,5 +14,15 @@ namespace BakeryVendor.Tests
       Vendor newVendor = new Vendor("test vendor");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
+
+    [TestMethod]
+    public void GetVendorName_ReturnVendorName_String()
+    {
+      string vendorName = "Pierre's Bakery";
+      Vendor testVendor = new Vendor(vendorName);
+      string result = testVendor.VendorName;
+
+      Assert.AreEqual(vendorName, result);
+    }
   }
 }

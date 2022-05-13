@@ -33,6 +33,18 @@ namespace BakeryVendor.Tests
     }
 
     [TestMethod]
+    public void GetPrice_ReturnPrice_Int()
+    {
+      string description = "bread";
+      int price = 1;
+
+      Order testOrder = new Order(description, price);
+      int result = testOrder.Price;
+
+      Assert.AreEqual(price, result);
+    }
+
+    [TestMethod]
     public void SetDescription_SetDescription_String()
     {
       string description = "some bread";
@@ -98,5 +110,5 @@ namespace BakeryVendor.Tests
       Order result = Order.Find(2);
       Assert.AreEqual(testOrder2, result);
     }
-    }
+  }
 }

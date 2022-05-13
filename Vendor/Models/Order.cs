@@ -11,8 +11,8 @@ namespace BakeryVendor.Models
 
     public Order(string description, int price)
     {
-      Price = price;
       Description = description;
+      Price = price;
       _instances.Add(this);
       Id = _instances.Count;
     }
