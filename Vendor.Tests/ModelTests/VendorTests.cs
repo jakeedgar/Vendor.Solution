@@ -30,18 +30,43 @@ namespace BakeryVendor.Tests
       Assert.AreEqual(vendorName, result);
     }
 
-    [TestMethod]
-    public void GetAll_ReturnsAllCategoryObjects_CategoryList()
+    public void SetVendorName_ReturnCorrectName_String()
     {
-      string name1 = "Vendor One";
-      string name2 = "Vendor Two";
-      Vendor testVendor1 = new Vendor(name1);
-      Vendor testVendor2 = new Vendor(name2);
+      string vendorName = "old name";
+      Vendor testVendor = new Vendor(vendorName);
+
+      string updatedVendorName = "New Vendor Name";
+      testVendor.VendorName = updatedVendorName;
+      string result = testVendor.VendorName;
+
+      Assert.AreEqual(updatedVendorName, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllVendorObjects_VendorList()
+    {
+      string vendorName1 = "Vendor One";
+      string vendorName2 = "Vendor Two";
+      Vendor testVendor1 = new Vendor(vendorName1);
+      Vendor testVendor2 = new Vendor(vendorName2);
       List<Vendor> newList = new List<Vendor> { testVendor1, testVendor2 };
 
       List<Vendor> result = Vendor.GetAll();
 
       CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectVendor_Vendor()
+    {
+      string vendorName1 = "Vendor One";
+      string vendorName2 = "Vendor Two";
+      Vendor testVendor1 = new Vendor(vendorName1);
+      Vendor testVendor2 = new Vendor(vendorName2);
+
+      Vendor result = Vendor.Find(2);
+      Assert.AreEqual(testVendor2, result);
+      
     }
   }
 }
