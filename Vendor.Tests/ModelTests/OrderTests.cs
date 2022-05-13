@@ -14,5 +14,17 @@ namespace BakeryVendor.Tests
       Order newOrder = new Order("test vendor");
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
+
+    [TestMethod]
+    public void OrderDescription_ReturnDescription_String()
+    {
+      string description = "bread";
+
+      Order testOrder = new Order(description);
+      string result = testOrder.Description;
+
+      Assert.AreEqual(description, result);
+    }
+
   }
 }
