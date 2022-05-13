@@ -12,7 +12,7 @@ namespace BakeryVendor.Tests
     {
       Vendor.ClearAll();
     }
-    
+
     [TestMethod]
     public void VendorConstructor_CreatesInstanceOfVendor_Vendor()
     {
@@ -28,6 +28,20 @@ namespace BakeryVendor.Tests
       string result = testVendor.VendorName;
 
       Assert.AreEqual(vendorName, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllCategoryObjects_CategoryList()
+    {
+      string name1 = "Vendor One";
+      string name2 = "Vendor Two";
+      Vendor testVendor1 = new Vendor(name1);
+      Vendor testVendor2 = new Vendor(name2);
+      List<Vendor> newList = new List<Vendor> { testVendor1, testVendor2 };
+
+      List<Vendor> result = Vendor.GetAll();
+
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
