@@ -6,8 +6,13 @@ using System;
 namespace BakeryVendor.Tests
 {
   [TestClass]
-  public class OrderTests
+  public class OrderTests : IDisposable
   {
+    public void Dispose()
+    {
+      Order.ClearAll();
+    }
+
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
@@ -16,7 +21,7 @@ namespace BakeryVendor.Tests
     }
 
     [TestMethod]
-    public void OrderDescription_ReturnDescription_String()
+    public void GetDescription_ReturnDescription_String()
     {
       string description = "bread";
 
@@ -26,5 +31,26 @@ namespace BakeryVendor.Tests
       Assert.AreEqual(description, result);
     }
 
+    [TestMethod]
+    public void SetDescription_SetDescription_String()
+    {
+      string description = "some bread";
+      Order testOrder = new Order(description);
+
+      string updatedDescription = "some pastries";
+      testOrder.Description = updatedDescription;
+      string result = testOrder.Description;
+
+      Assert.AreEqual(updatedDescription, result);
+    }
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_ItemList()
+    {
+      List<Order> testOrder = new List<Order> { };
+
+      List<Order> result = Order.GetAll();
+
+      CollectionAssert.AreEqual(testOrder, result);
+    }
   }
 }
