@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-namespace Vendor.Models
+namespace BakeryVendor.Models
 {
   public class Order
   {
-    public Order()
+    public Order(string orderName)
     {
-      
+
     }
   }
 }

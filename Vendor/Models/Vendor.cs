@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace Vendor.Models 
+namespace BakeryVendor.Models 
 {
   public class Vendor 
   {
-    public Vendor()
+    public Vendor(string vendorName)
     {
 
     }
