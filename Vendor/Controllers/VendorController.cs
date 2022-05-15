@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System;
 using Microsoft.AspNetCore.Mvc;
 using BakeryVendor.Models;
 
@@ -22,9 +21,9 @@ namespace BakeryVendor.Controllers
     }
 
     [HttpPost("/vendors")]
-    public ActionResult Create(string name)
+    public ActionResult Create(string vendorName)
     {
-      Vendor newVendor = new Vendor(name);
+      Vendor newVendor = new Vendor(vendorName);
       return RedirectToAction("Index");
     }
 
